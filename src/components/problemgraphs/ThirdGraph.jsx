@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import DashboardContainer from '../DashboardContainer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -19,17 +20,17 @@ const ThirdGraph = () => {
       {
         label: 'Positive',
         data: [20],
-        backgroundColor: 'red',
+        backgroundColor: '#16a34a',
       },
       {
         label: 'Negative',
         data: [30],
-        backgroundColor: 'blue',
+        backgroundColor: '#dc2626',
       },
       {
         label: 'Resolved',
         data: [50],
-        backgroundColor: 'green',
+        backgroundColor: '#0284c7',
       },
     ],
   };
@@ -38,20 +39,41 @@ const ThirdGraph = () => {
     indexAxis: 'y',
     responsive: true,
     maintainAspectRatio: false,
+    color: "rgba(255,255,255,0.8)",
     plugins: {
       legend: {
-        position: 'right',
+        position: 'bottom',
       },
+      datalabels: {
+        color: "rgba(255,255,255,0.8)"
+      }
     },
     scales: {
       x: {
         min: 0,
         max: 60,
+        grid: { color: "rgba(255,255,255,0.1)" },
+        ticks: { color: "rgba(255,255,255,0.5)" }
       },
+      y: {
+        grid: { color: "rgba(255,255,255,0.1)" },
+        title: {
+          display: true,
+          text: 'Battery Issues',
+          color: "rgba(255,255,255,0.5)"
+        },
+        ticks: {
+          display: false
+        }
+      }
     },
   };
 
-  return <Bar data={barData} options={barOptions} />;
+  return (
+    <DashboardContainer title="Insert Graph Title">
+      <Bar data={barData} options={barOptions} />
+    </DashboardContainer>
+  )
 };
 
 export default ThirdGraph;

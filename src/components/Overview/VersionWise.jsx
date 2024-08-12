@@ -13,12 +13,14 @@ export default function VersionWise() {
   };
 
   const TopicBtn = (
-    <select className="flex items-center justify-center bg-slate-600 rounded-full shadow-md text-white focus:outline-none px-3 text-sm" onChange={(e) => handleOptionClick(e.target.value)}>
+    <div className="pr-2 flex items-center justify-center  bg-slate-600 rounded-full shadow-md">
+      <select className="bg-slate-600 rounded-full text-white focus:outline-none px-3 text-sm"  onChange={(e) => handleOptionClick(e.target.value)}>
         <option value="" disabled selected>Select Version</option>
-        {['v1', 'v2', 'v3'].map(v => (
-            <option value={v}>{v}</option>
-        ))}
-    </select>
+          {['v1', 'v2', 'v3'].map(v => (
+              <option value={v}>{v}</option>
+          ))}
+      </select>
+    </div>
   )
 
   return (

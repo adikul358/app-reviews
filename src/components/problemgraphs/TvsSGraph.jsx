@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import DashboardContainer from '../DashboardContainer';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
@@ -28,11 +29,11 @@ const TvsSGraph = () => {
           { x: 30, y: 10 },
           { x: 31, y: 11 },
         ],
-        backgroundColor: 'red',
-        pointBackgroundColor: 'red',
+        backgroundColor: '#14b8a6',
+        pointBackgroundColor: '#14b8a6',
       },
       {
-        label: 'iOS Store',
+        label: 'iOS App Store',
         data: [
           { x: 20, y: 4 },
           { x: 25, y: 15 },
@@ -43,11 +44,11 @@ const TvsSGraph = () => {
           { x: 15, y: 3 },
           { x: 17, y: 8 },
         ],
-        backgroundColor: 'grey',
-        pointBackgroundColor: 'grey',
+        backgroundColor: '#0ea5e9',
+        pointBackgroundColor: '#0ea5e9',
       },
       {
-        label: 'Playstore',
+        label: 'Play Store',
         data: [
           { x: 1, y: 15 },
           { x: 20, y: 25 },
@@ -58,18 +59,23 @@ const TvsSGraph = () => {
           { x: 23, y: 10 },
           { x: 24, y: 11 },
         ],
-        backgroundColor: 'blue',
-        pointBackgroundColor: 'blue',
+        backgroundColor: '#16a34a',
+        pointBackgroundColor: '#16a34a',
       },
     ],
   };
 
   const scatterOptions = {
+    color: "rgba(255,255,255,0.8)",
     plugins: {
       legend: {
         display: true,
-        position: 'right',
+        position: 'bottom',
       },
+      datalabels: {
+        display: false,
+        color: "rgba(255,255,255,0.8)"
+      }
     },
     scales: {
       x: {
@@ -78,8 +84,10 @@ const TvsSGraph = () => {
         title: {
           display: true,
           text: 'Topics',
-          color: '#000000', // Optional: Add color to make the label more visible
+          color: "rgba(255,255,255,0.5)", // Optional: Add color to make the label more visible
         },
+        grid: { color: "rgba(255,255,255,0.1)" },
+        ticks: { color: "rgba(255,255,255,0.5)" }
       },
       y: {
         type: 'linear',
@@ -87,15 +95,21 @@ const TvsSGraph = () => {
         title: {
           display: true,
           text: 'Sentiments',
-          color: '#000000', // Optional: Add color to make the label more visible
+          color: "rgba(255,255,255,0.5)", // Optional: Add color to make the label more visible
         },
+        grid: { color: "rgba(255,255,255,0.1)" },
+        ticks: { color: "rgba(255,255,255,0.5)" }
       },
     },
     responsive: true,
     maintainAspectRatio: false,
   };
 
-  return <Scatter data={scatterData} options={scatterOptions} />;
+  return (
+    <DashboardContainer title="Insert Graph Title">
+      <Scatter data={scatterData} options={scatterOptions} />
+    </DashboardContainer>
+  )
 };
 
 export default TvsSGraph;

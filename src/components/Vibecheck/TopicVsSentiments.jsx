@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import 'daisyui/dist/full.css';
+import { MdOutlineTableChart, MdInsertChartOutlined } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 
 export default function TopicVsSentiments() {
@@ -87,7 +88,12 @@ export default function TopicVsSentiments() {
 
     return (
         <DashboardContainer title="Insert Graph Title">
-            <div className="h-full" onClick={toggleView}>
+            <div className="h-full">
+                <div className="z-20 flex flex-row justify-end space-x-3 mb-3 absolute bottom-2 right-4">
+                    <button className="flex items-center justify-center w-12 h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none text-xl" onClick={toggleView} title={showGraph ? "View Table" : "View Graph"}>
+                        {showGraph ? <MdOutlineTableChart /> : <MdInsertChartOutlined />}
+                    </button>
+                </div>
                 {showGraph ? (
                     <Line id={22} data={data} options={options} />
                 ) : (

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Chart } from 'chart.js/auto';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { MdOutlineTableChart, MdInsertChartOutlined } from "react-icons/md";
+import { MdOutlineTableChart, MdInsertChartOutlined, MdOutlinePercent, Md123 } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 import { plugin } from 'mongoose';
 
@@ -11,6 +11,7 @@ Chart.register(ChartDataLabels);
 
 export default function ReviewsVSMonth() {
     const [showGraph, setShowGraph] = useState(true);
+    const [showPercent, setShowPercent] = useState(false);
 
     const reviewData = [
         { month: 'Jan 2023', positive: 10000, neutral: 1000, negative: 1000 },
@@ -35,6 +36,36 @@ export default function ReviewsVSMonth() {
         { month: 'Aug 2024', positive: 6000, neutral: 1000, negative: 1000 },
         // Add more months as needed
     ];
+
+    const reviewDataPercentage = reviewData.map(v => {
+        var sum = v.positive + v.negative + v.neutral;
+        return {
+            month: v.month,
+            positive: (v.positive*100 / sum),
+            neutral: (v.neutral*100 / sum),
+            negative: (v.negative*100 / sum),
+        }
+    })
+    // const [reviewDataPercentage, setReviewDataPercentage] = useState(reviewData.map(v => {
+    //     var sum = v.positive + v.negative + v.neutral;
+    //     return {
+    //         month: v.month,
+    //         positive: (v.positive*100 / sum),
+    //         neutral: (v.neutral*100 / sum),
+    //         negative: (v.negative*100 / sum),
+    //     }
+    // }))
+    // useEffect(() => {
+    //     setReviewDataPercentage(reviewData.map(v => {
+    //         var sum = v.positive + v.negative + v.neutral;
+    //         return {
+    //             month: v.month,
+    //             positive: (v.positive*100 / sum),
+    //             neutral: (v.neutral*100 / sum),
+    //             negative: (v.negative*100 / sum),
+    //         }
+    //     }))
+    // }, [reviewData])
 
     const dataBar = {
         labels: reviewData.map(item => item.month),
@@ -174,17 +205,26 @@ export default function ReviewsVSMonth() {
     const toggleView = () => {
         setShowGraph(!showGraph);
     };
+    const togglePercent = () => {
+        setShowPercent(!showPercent);
+    };
 
     return (
         <DashboardContainer title="Insert Graph Title">
             <div className="h-full">
                 <div className="z-20 flex flex-row justify-end space-x-3 mb-3 absolute bottom-2 right-4">
-                    {showGraph && (
-                        <select className="flex items-center justify-center w-[120px] h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none px-3 text-sm" defaultValue={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} title={showGraph ? "View Table" : "View Graph"}>
-                            {reviewData.map(v => (
-                                <option value={v.month}>{v.month}</option>
-                            ))}
-                        </select>
+                    {showGraph ? (
+                        <div className="bg-slate-800 rounded-full pr-2">
+                            <select className="flex items-center justify-center w-[120px] h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none px-3 text-sm" defaultValue={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} title={showGraph ? "View Table" : "View Graph"}>
+                                {reviewData.map(v => (
+                                    <option value={v.month}>{v.month}</option>
+                                ))}
+                            </select>
+                        </div>
+                    ) : (
+                        <button className="flex items-center justify-center w-12 h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none text-xl" onClick={togglePercent} title={showPercent ? "View Count" : "View Percent"}>
+                            {showPercent ?  <Md123 size={32} /> : <MdOutlinePercent />}
+                        </button>
                     )}
                     <button className="flex items-center justify-center w-12 h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none text-xl" onClick={toggleView} title={showGraph ? "View Table" : "View Graph"}>
                         {showGraph ? <MdOutlineTableChart /> : <MdInsertChartOutlined />}
@@ -197,20 +237,31 @@ export default function ReviewsVSMonth() {
                         <thead>
                             <tr className="text-white/50">
                                 <th>Month</th>
-                                <th>Positive (count)</th>
-                                <th>Neutral (count)</th>
-                                <th>Negative (count)</th>
+                                <th>Positive {showPercent ? "(%age)" : "(count)"}</th>
+                                <th>Neutral {showPercent ? "(%age)" : "(count)"}</th>
+                                <th>Negative {showPercent ? "(%age)" : "(count)"}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {reviewData.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.month}</td>
-                                    <td className="font-light">{item.positive.toLocaleString()}</td>
-                                    <td className="font-light">{item.neutral.toLocaleString()}</td>
-                                    <td className="font-light">{item.negative.toLocaleString()}</td>
-                                </tr>
-                            ))}
+                            {showPercent ? 
+                                reviewDataPercentage.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.month}</td>
+                                        <td className="font-light text-right">{item.positive.toFixed(1)+"%"}</td>
+                                        <td className="font-light text-right">{item.neutral.toFixed(1)+"%"}</td>
+                                        <td className="font-light text-right">{item.negative.toFixed(1)+"%"}</td>
+                                    </tr>
+                                ))
+                                : 
+                                reviewData.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.month}</td>
+                                        <td className="font-light text-right">{item.positive.toLocaleString()}</td>
+                                        <td className="font-light text-right">{item.neutral.toLocaleString()}</td>
+                                        <td className="font-light text-right">{item.negative.toLocaleString()}</td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 )}

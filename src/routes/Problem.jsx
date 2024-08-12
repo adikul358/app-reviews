@@ -21,23 +21,21 @@ export default function Problem() {
 			<div className="flex flex-col flex-grow">
 				<Dropdown />
 
-				<div className="grid p-8">
-					<div className="flex flex-wrap justify-between items-start gap-4" >
-						<div className="card bg-orange-200 shadow-xl w-full overflow-hidden rounded-lg" style={{ maxWidth: '628.57px', minHeight: '555px', padding: '20px' }}>
-							<TvsSGraph />
-						</div>
-						<div className="flex flex-col gap-4">
-							<div className="card bg-base-100 w-full shadow-xl overflow-hidden rounded-lg" style={{ maxWidth: '333.33px', minHeight: '250px', padding: '20px' }}>
-								<SecondGraph />
-							</div>
-							<div className="card bg-grey-200 w-full shadow-xl overflow-hidden rounded-lg" style={{ maxWidth: '333.33px', minHeight: '250px', padding: '20px' }}>
-								<ThirdGraph />
-							</div>
-						</div>
-						<div className="card bg-cyan-200 shadow-xl p-5 overflow-hidden rounded-lg" style={{ maxWidth: '226.8px', minHeight: '550px', padding: '20px' }}>
-							<PieGraph />
-						</div>
+				<div className="grid p-8 grid-rows-6 grid-cols-4 grid-flow-row gap-8 h-full">
+
+					<div className="row-span-6 col-span-2">
+						<TvsSGraph />
 					</div>
+					<div className="row-span-3 col-span-2">
+						<SecondGraph />
+					</div>
+					<div className="row-span-3 col-span-1">
+						<ThirdGraph />
+					</div>
+					<div className="row-span-3 col-span-1">
+						<PieGraph />
+					</div>
+
 				</div>
 			</div>
 		</div>

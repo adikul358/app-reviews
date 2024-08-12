@@ -28,11 +28,11 @@ export default function TrueRating() {
                 onClick={handleClick}
                 className="flex flex-col h-full items-center justify-center cursor-pointer"
             >
-                <p className="text-9xl font-semibold">
+                <p className="xl:text-9xl text-6xl font-semibold">
                     {rating}
                 </p>
                 <StarRating rating={rating} className="mt-2" />
-                <span className='mt-3 text-xl'>
+                <span className='mt-3 xl:text-xl text-lg'>
                     {type}
                 </span>
             </div>
