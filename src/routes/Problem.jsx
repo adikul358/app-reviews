@@ -5,7 +5,7 @@ import ThirdGraph from '../components/problemgraphs/ThirdGraph';
 import PieGraph from '../components/problemgraphs/PieGraph';
 import TvsSGraph from '../components/problemgraphs/TvsSGraph';
 import SideNav from '../components/SideNav/SideNav';
-import Dropdown from '../components/Dropdown';
+import TopMenu from '../components/TopMenu';
 
 export default function Problem() {
 
@@ -19,7 +19,7 @@ export default function Problem() {
 			<SideNav active="Problem" />
 
 			<div className="flex flex-col flex-grow">
-				<Dropdown />
+				<TopMenu />
 
 				<div className="grid p-8 grid-rows-6 grid-cols-4 grid-flow-row gap-8 h-full">
 

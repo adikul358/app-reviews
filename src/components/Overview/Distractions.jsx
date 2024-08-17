@@ -1,5 +1,5 @@
 import React from 'react';
-import DistractionsTable from './DistractionsTable';
+import ReviewsTable from '../ReviewsTable';
 import { MdOutlineFileDownload } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 
@@ -44,7 +44,7 @@ export default function Distractions() {
 
   return (
     <DashboardContainer title="Distractions Table" rightBtn={CSVBtn}>
-      <DistractionsTable data={data} />
+      <ReviewsTable data={data} />
     </DashboardContainer>
   );
 }

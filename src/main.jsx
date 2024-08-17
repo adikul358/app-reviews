@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Dashboard from './routes/Dashboard.jsx';
 import VibeCheck from './routes/VibeCheck.jsx';
 import Signup from './routes/Register.jsx';
@@ -10,9 +10,15 @@ import Login from './routes/Login.jsx';
 import Problem from './routes/Problem.jsx';
 import Overview from './routes/Overview.jsx';
 import Profile from './routes/Profile.jsx';
+import AllReviews from './routes/AllReviews.jsx';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
+
+import { Chart } from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
+Chart.register(ChartDataLabels);
 
 const Router= createBrowserRouter([
   {path:"/",element:<App/>},
@@ -24,6 +30,8 @@ const Router= createBrowserRouter([
   {path:"/login",element:<Login/>},
   {path:"/register",element:<Signup/>},
   {path:"/profile",element:<Profile/>},
+  {path:"/reviews",element:<AllReviews/>},
+  
   
 
 ]);

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import SideNav from "../components/SideNav/SideNav"
-import Dropdown from "../components/Dropdown"
+import TopMenu from "../components/TopMenu"
 import EagleEye from '../components/Dashboard/EagleEye';
 import BestReview from '../components/Dashboard/BestReview';
 import FunnyReview from '../components/Dashboard/FunnyReview';
@@ -21,7 +21,7 @@ export default function Dashboard() {
                 <SideNav active="Dashboard" />
 
                 <div className="flex flex-col flex-grow">
-                    <Dropdown />
+                    <TopMenu />
 
                     <div className="grid p-8 grid-rows-5 grid-cols-6 grid-flow-row gap-8 h-full">
                         <div className="col-span-2 row-span-3">

@@ -7,7 +7,8 @@ import {
     MdWaves,
     MdFactCheck,
     MdHelpOutline,
-    MdOutlineAccountCircle
+    MdAccountCircle,
+    MdFolder
 } from "react-icons/md";
 import MenuItem from './MenuItem';
 
@@ -33,9 +34,14 @@ const NAVIGATION_ITEMS = [
         icon: <MdHelpOutline />
     },
     {
+        label: "All Reviews",
+        link: "/reviews",
+        icon: <MdFolder />
+    },
+    {
         label: "Profile",
         link: "/profile",
-        icon: <MdOutlineAccountCircle />
+        icon: <MdAccountCircle />
     },
 ]
 

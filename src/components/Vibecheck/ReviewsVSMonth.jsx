@@ -1,12 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Chart } from 'chart.js/auto';
 import { Bar, Pie, Line } from 'react-chartjs-2';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { MdOutlineTableChart, MdInsertChartOutlined, MdOutlinePercent, Md123 } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 import { plugin } from 'mongoose';
-
-Chart.register(ChartDataLabels);
+import { Chart } from 'chart.js/auto';
 
 
 export default function ReviewsVSMonth() {
@@ -173,6 +170,12 @@ export default function ReviewsVSMonth() {
                 display: true,
                 position: "right",
                 align: "center",
+                labels: {
+                    borderRadius: 4,
+                    useBorderRadius: true,
+                    usePointStyle: true,
+                    pointStyle: "rectRounded"
+                },
             },
             datalabels: {
                 formatter: (value, ctx) => {
@@ -231,7 +234,7 @@ export default function ReviewsVSMonth() {
                     </button>
                 </div>
                 {showGraph ? (
-                    <Pie id={21} data={data} options={options} plugins={[ChartDataLabels]} />
+                    <Pie id={21} data={data} options={options}  />
                 ) : (
                     <table className="table pb-20">
                         <thead>

@@ -8,11 +8,10 @@
 
     .table {
         width: 100%;
-        text-align: center;
         border-collapse: separate !important;
         border-spacing: 0 !important;
     }
-    
+
     .table thead tr:nth-child(1) th {
         @apply bg-slate-600 sticky top-0 z-10 font-medium border-b-2 border-slate-800;
     }
@@ -21,4 +20,34 @@
         @apply border-b border-slate-800;
     }
 
+}
+
+.star-ratings {
+    unicode-bidi: bidi-override;
+    color: #ccc;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.star-ratings .fill-ratings {
+    @apply text-gray-200;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.star-ratings .fill-ratings span {
+    display: inline-block;
+}
+
+.star-ratings .empty-ratings {
+    @apply text-slate-700;
+    padding: 0;
+    display: block;
+    z-index: 0;
 }

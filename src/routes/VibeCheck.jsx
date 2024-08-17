@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import SideNav from "../components/SideNav/SideNav"
-import Dropdown from "../components/Dropdown"
+import TopMenu from "../components/TopMenu"
 import ReviewsVSMonth from '../components/Vibecheck/ReviewsVSMonth';
 import TopicVsSentiments from '../components/Vibecheck/TopicVsSentiments';
 import SaMoM from '../components/Vibecheck/saMoM';
@@ -19,7 +19,7 @@ export default function Vibe() {
                 <SideNav active="Vibe" />
 
                 <div className="flex flex-col flex-grow">
-                    <Dropdown />
+                    <TopMenu />
 
                     <div className="grid p-8 grid-rows-5 grid-cols-6 grid-flow-row gap-8 h-full">
                         <div className="col-span-3 row-span-3">

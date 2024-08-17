@@ -8,40 +8,40 @@ export default function TopicVsSentiments() {
     const [showGraph, setShowGraph] = useState(true);
 
     const reviewData = [
-        { month: 'Version1', positive: 80, neutral: 10, negative: 10 },
-        { month: 'Version2', positive: 70, neutral: 15, negative: 15 },
-        { month: 'Version3', positive: 60, neutral: 20, negative: 20 },
-        { month: 'Version4', positive: 90, neutral: 5, negative: 5 },
-        { month: 'Version5', positive: 50, neutral: 30, negative: 20 },
-        { month: 'Version6', positive: 75, neutral: 10, negative: 15 },
-        { month: 'Version6.1', positive: 65, neutral: 25, negative: 10 },
-        { month: 'Version6.2', positive: 80, neutral: 10, negative: 10 },
-        { month: 'Version6.3', positive: 70, neutral: 20, negative: 10 },
-        { month: 'Version6.4', positive: 85, neutral: 5, negative: 10 },
-        { month: 'Version6.5', positive: 60, neutral: 30, negative: 10 },
-        { month: 'Version7', positive: 40, neutral: 10, negative: 50 },
+        { month: 'v1', positive: 80, neutral: 10, negative: 10 },
+        { month: 'v2', positive: 70, neutral: 15, negative: 15 },
+        { month: 'v3', positive: 60, neutral: 20, negative: 20 },
+        { month: 'v4', positive: 90, neutral: 5, negative: 5 },
+        { month: 'v5', positive: 50, neutral: 30, negative: 20 },
+        { month: 'v6', positive: 75, neutral: 10, negative: 15 },
+        { month: 'v6.1', positive: 65, neutral: 25, negative: 10 },
+        { month: 'v6.2', positive: 80, neutral: 10, negative: 10 },
+        { month: 'v6.3', positive: 70, neutral: 20, negative: 10 },
+        { month: 'v6.4', positive: 85, neutral: 5, negative: 10 },
+        { month: 'v6.5', positive: 60, neutral: 30, negative: 10 },
+        { month: 'v7', positive: 40, neutral: 10, negative: 50 },
     ];
 
     const data = {
-        labels: reviewData.map(item => item.month),
+        labels: reviewData.slice(-8, -1).map(item => item.month),
         datasets: [
             {
                 label: 'Positive',
-                data: reviewData.map(item => item.positive),
+                data: reviewData.slice(-8, -1).map(item => item.positive),
                 borderColor: 'rgba(75, 192, 192, 0.6)',
                 fill: false,
                 tension: 0.2
             },
             {
                 label: 'Neutral',
-                data: reviewData.map(item => item.neutral),
+                data: reviewData.slice(-8, -1).map(item => item.neutral),
                 borderColor: 'rgba(54, 162, 235, 0.6)',
                 fill: false,
                 tension: 0.2
             },
             {
                 label: 'Negative',
-                data: reviewData.map(item => item.negative),
+                data: reviewData.slice(-8, -1).map(item => item.negative),
                 borderColor: 'rgba(255, 99, 132, 0.6)',
                 fill: false,
                 tension: 0.2
@@ -56,7 +56,9 @@ export default function TopicVsSentiments() {
         scales: {
             x: { 
                 grid: { color: "rgba(255,255,255,0.1)" },
-                ticks: { color: "rgba(255,255,255,0.5)" }
+                ticks: { 
+                    color: "rgba(255,255,255,0.5)" 
+                }
             },
             y: {
                 grid: { color: "rgba(255,255,255,0.1)" },
@@ -65,6 +67,7 @@ export default function TopicVsSentiments() {
             },
         },
         plugins: {
+            legend: { position: "right" },
             datalabels: {
                 display: false,
             },

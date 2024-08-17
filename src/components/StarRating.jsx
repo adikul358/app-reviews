@@ -1,24 +1,17 @@
 // src/components/StarRating.js
 import React from 'react';
 
-const StarRating = ({ rating }) => {
-  const stars = Array.from({ length: 5 }, (_, index) => index + 1);
+const StarRating = ({ rating, className }) => {
+  const ratingfmt = Math.round(rating*20) + "%";
 
   return (
-    <div className="flex items-center">
-      {stars.map((star) => (
-        <svg
-          key={star}
-          className={`h-6 w-6 ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10 15l-5.66 3.73 1.83-6.1L2 7.6l6.21-.52L10 2l1.79 5.08 6.21.52-4.17 4.03 1.83 6.1L10 15z"
-          />
-        </svg>
-      ))}
+    <div className={`star-ratings ${className}`}>
+      <div className="fill-ratings" style={{"width": ratingfmt}}>
+        <span>★★★★★</span>
+      </div>
+      <div className="empty-ratings">
+        <span>★★★★★</span>
+      </div>
     </div>
   );
 };
