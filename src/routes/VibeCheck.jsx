@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import SideNav from "../components/SideNav/SideNav"
 import TopMenu from "../components/TopMenu"
-import ReviewsVSMonth from '../components/Vibecheck/ReviewsVSMonth';
-import TopicVsSentiments from '../components/Vibecheck/TopicVsSentiments';
-import SaMoM from '../components/Vibecheck/saMoM';
+import ReviewsVSMonth from '../components/Vibe/ReviewsVSMonth';
+import TopicVsSentiments from '../components/Vibe/TopicVsSentiments';
+import SaMoM from '../components/Vibe/saMoM';
 
 
 export default function Vibe() {

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
-import SecondGraph from '../components/problemgraphs/SecondGraph';
-import ThirdGraph from '../components/problemgraphs/ThirdGraph';
-import PieGraph from '../components/problemgraphs/PieGraph';
-import TvsSGraph from '../components/problemgraphs/TvsSGraph';
+import SecondGraph from '../components/Problem/SecondGraph';
+import ThirdGraph from '../components/Problem/ThirdGraph';
+import PieGraph from '../components/Problem/PieGraph';
+import TvsSGraph from '../components/Problem/TvsSGraph';
 import SideNav from '../components/SideNav/SideNav';
 import TopMenu from '../components/TopMenu';
 

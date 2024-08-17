@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Dashboard from './routes/Dashboard.jsx';
-import VibeCheck from './routes/VibeCheck.jsx';
+import VibeCheck from './routes/Vibe.jsx';
 import Signup from './routes/Register.jsx';
 import Login from './routes/Login.jsx';
 import Problem from './routes/Problem.jsx';

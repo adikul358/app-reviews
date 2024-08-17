@@ -1,5 +1,5 @@
 import DashboardContainer from "../DashboardContainer";
-import Graph from "../vibegraph/Graph";
+import Graph from "../Vibe/Graph";
 
 export default function saMoM() {
     return (
