@@ -65,7 +65,7 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
           </div>
           <span className="text-slate-700 text-sm">{date}</span>
         </div>
-        <p className="text-gray-800 mt-6 line-clamp-3">{text}</p>
+        <p className="text-gray-800 mt-6 line-clamp-2">{text}</p>
         <div className="flex justify-end items-center space-x-3 mt-8">
           <SentimentPill sentiment={sentiment} />
           <PlatformPill platform={platform} />

@@ -1,4 +1,4 @@
-export default function DashboardContainer({ title, children, rightBtn }) {
+export default function DashboardContainer({ title, children, rightBtn, padding }) {
     return (
         <div className="flex flex-col h-full rounded-xl drop-shadow-lg bg-slate-600 text-white/80 overflow-hidden">
             {title && (
@@ -7,7 +7,7 @@ export default function DashboardContainer({ title, children, rightBtn }) {
                     {rightBtn}
                 </div>
             )}
-            <div className="flex flex-col flex-grow p-4">
+            <div className={`p-${padding >= 0 ? padding : 4 } flex flex-col flex-grow`}>
                 <div className="flex flex-col flex-grow h-[100px] overflow-y-scroll">
                     {children}
                 </div>

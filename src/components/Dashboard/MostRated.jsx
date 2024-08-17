@@ -3,8 +3,8 @@ import ReviewCard from "./ReviewCard";
 
 export default function MostRated() {
   return (
-    <DashboardContainer title="Most Rated">
-      <div className="flex flex-col space-y-6">
+    <DashboardContainer title="Most Rated" padding={0}>
+      <div className="flex flex-col space-y-6 p-4">
         <ReviewCard
           rating={5}
           date="27 Jul 2024"
