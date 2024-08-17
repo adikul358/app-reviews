@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Dashboard from './routes/Dashboard.jsx';
-import VibeCheck from './routes/Vibe.jsx';
+import Vibe from './routes/Vibe.jsx';
 import Signup from './routes/Register.jsx';
 import Login from './routes/Login.jsx';
 import Problem from './routes/Problem.jsx';
@@ -23,7 +23,7 @@ Chart.register(ChartDataLabels);
 const Router= createBrowserRouter([
   {path:"/",element:<App/>},
   {path:"/dashboard",element:<Dashboard/>},
-  {path:"/vibe",element:<VibeCheck/>},
+  {path:"/vibe",element:<Vibe/>},
   {path:"/problem",element:<Problem/>},
   {path:"/overview",element:<Overview/>},
   {path:"/founder",element:<h1 className='text-2xl flex justify-center'>Yet to be made or linked to router . Configure it in main.jsx</h1>},

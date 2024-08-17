@@ -79,7 +79,7 @@ export default function SideNav({ active }) {
 
     return (
         <>
-            <div className="flex flex-col flex-shrink-0 flex-grow-0 w-[240px] h-screen bg-slate-800">
+            <div className="sticky top-0 left-0 flex flex-col flex-shrink-0 flex-grow-0 w-[240px] h-screen bg-slate-800">
 
                 <Link to="/">
                     <img src={Logo} alt="Logo" className="w-full p-4 my-3" />

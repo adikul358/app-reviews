@@ -17,7 +17,7 @@ export default function AllReviews() {
       <SideNav active="All Reviews" />
 
       <div className="flex flex-col flex-grow">
-        <TopMenu />
+        {/* <TopMenu /> */}
 
         <div className="grid p-8 h-full overflow-x-scroll">
           <AllReviewsTable />

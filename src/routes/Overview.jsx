@@ -17,7 +17,7 @@ export default function Overview() {
       <SideNav active="Overview" />
 
       <div className="flex flex-col flex-grow">
-        <TopMenu />
+        {/* <TopMenu /> */}
 
         <div className="grid p-8 grid-rows-5 grid-cols-5 grid-flow-row gap-8 h-full">
           <div className="row-span-2 col-span-1">

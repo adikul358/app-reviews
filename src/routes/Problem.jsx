@@ -19,7 +19,7 @@ export default function Problem() {
 			<SideNav active="Problem" />
 
 			<div className="flex flex-col flex-grow">
-				<TopMenu />
+				{/* <TopMenu /> */}
 
 				<div className="grid p-8 grid-rows-6 grid-cols-4 grid-flow-row gap-8 h-full">
 

@@ -19,7 +19,7 @@ export default function Vibe() {
                 <SideNav active="Vibe" />
 
                 <div className="flex flex-col flex-grow">
-                    <TopMenu />
+                    {/* <TopMenu /> */}
 
                     <div className="grid p-8 grid-rows-5 grid-cols-6 grid-flow-row gap-8 h-full">
                         <div className="col-span-3 row-span-3">
