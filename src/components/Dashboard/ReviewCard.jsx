@@ -36,7 +36,7 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
       <Modal
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
-        className="p-6 pb-8 bg-white/90 max-h-full overflow-y-scroll w-full max-w-5xl mx-6 flex flex-col focus:outline-none"
+        className="p-6 pb-8 bg-white/90 max-h-full overflow-y-scroll w-full max-w-5xl mx-6 flex flex-col focus:outline-none rounded-lg"
         overlayClassName="flex items-center justify-center bg-black/50 backdrop-blur fixed inset-0 py-6"
       >
         <div className="flex items-center justify-between">
@@ -57,7 +57,7 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
 
   return (
     <>
-      <div className="p-6 pb-8 bg-white/70 hover:bg-white/80 transition-color ease-out duration-150 cursor-pointer flex flex-col" onClick={() => setShowModal(true)}>
+      <div className="p-6 bg-white/70 hover:bg-white/80 transition-color ease-out duration-150 cursor-pointer flex flex-col" onClick={() => setShowModal(true)}>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="text-slate-700 font-semibold text">{rating.toFixed(1)}</span>
