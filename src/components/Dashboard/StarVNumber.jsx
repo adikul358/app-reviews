@@ -36,6 +36,7 @@ export default function StarVNumber() {
                     responsive: true, // Make the chart responsive
                     maintainAspectRatio: false, // Allow the chart to resize freely
                     color: "#ffffff",
+                    plugins: { datalabels: {display: false}},
                     scales: {
                         x: { 
                             grid: { color: "rgba(255,255,255,0.1)" },

@@ -24,7 +24,7 @@
 
 .star-ratings {
     unicode-bidi: bidi-override;
-    color: #ccc;
+    /* color: #ccc; */
     position: relative;
     margin: 0;
     padding: 0;
@@ -50,4 +50,11 @@
     padding: 0;
     display: block;
     z-index: 0;
+}
+
+.star-ratings.invert-rating .fill-ratings {
+    @apply text-slate-700;
+}
+.star-ratings.invert-rating .empty-ratings {
+    @apply text-gray-400/75;
 }

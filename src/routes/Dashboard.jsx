@@ -30,13 +30,10 @@ export default function Dashboard() {
                         <div className="col-span-4 row-span-3">
                             <StarVNumber />
                         </div>
-                        <div className="col-span-2 row-span-2">
+                        <div className="col-span-3 row-span-2">
                             <MostRated /> {/* best and funny review division */}
                         </div>
-                        <div className="col-span-2 row-span-2">
-                            <BestReview />
-                        </div>
-                        <div className="col-span-2 row-span-2">
+                        <div className="col-span-3 row-span-2">
                             <FunnyReview />
                         </div>
                     </div>

@@ -1,7 +1,6 @@
-// src/components/StarRating.js
 import React from 'react';
 
-const StarRating = ({ rating, className }) => {
+export default function StarRating ({ rating, className }) {
   const ratingfmt = Math.round(rating*20) + "%";
 
   return (
@@ -15,5 +14,3 @@ const StarRating = ({ rating, className }) => {
     </div>
   );
 };
-
-export default StarRating;
