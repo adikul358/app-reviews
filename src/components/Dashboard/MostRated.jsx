@@ -1,6 +1,7 @@
+import { useSelector } from 'react-redux';
+import { format } from "date-fns";
 import DashboardContainer from "../DashboardContainer";
 import ReviewCard from "./ReviewCard";
-import { format } from "date-fns";
 
 const data = [
   {
@@ -85,14 +86,19 @@ const data = [
   },
 ]
 
-const sortData = (a, b) => (b.thumbs - a.thumbs)
-
-
 export default function MostRated() {
+  const selection = useSelector(state => state.dropdown.selection)
+
+  const sortData = (a, b) => (b.thumbs - a.thumbs)
+  const filterData = (v) => {
+    if (selection == "Combined") { return true }
+    else { return (v.platform == selection) }
+  }
+
   return (
     <DashboardContainer title="Most Rated" padding={0}>
       <div className="flex flex-col space-y-6 p-4">
-        {data.sort(sortData).map((v,i) => (
+        {data.filter(filterData).sort(sortData).map((v,i) => (
           <ReviewCard
             rating={v.rating}
             date={format(new Date(v.date), "d MMM y")}

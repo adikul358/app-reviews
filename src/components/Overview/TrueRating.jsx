@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import StarRating from '../StarRating';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DashboardContainer from '../DashboardContainer';
 
 const data = {

@@ -21,7 +21,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(ChartDataLabels);
 
 const Router= createBrowserRouter([
-  {path:"/",element:<App/>},
+  // {path:"/",element:<App/>},
   {path:"/dashboard",element:<Dashboard/>},
   {path:"/vibe",element:<Vibe/>},
   {path:"/problem",element:<Problem/>},

@@ -1,6 +1,6 @@
-import React from 'react';
-import ReviewsTable from '../ReviewsTable';
+import { useSelector } from "react-redux";
 import { MdOutlineFileDownload } from "react-icons/md";
+import ReviewsTable from '../ReviewsTable';
 import DashboardContainer from '../DashboardContainer';
 
 const data = [
@@ -113,17 +113,28 @@ const headers = [
 ]
 
 export default function Distractions() {
+
+  const selection = useSelector(state => state.dropdown.selection)
+
+  const filterData = (v) => {
+    if (selection == "Combined") { return true }
+    else { return (v.platform == selection) }
+  }
+
   const downloadCSV = () => {
-    const headers = data.length ? Object.keys(data[0]) : [];
     const csvRows = [];
 
     // Add headers
-    csvRows.push(headers.join(','));
+    const headerValues = headers.map(header => {
+      const escaped = ('' + header.val).replace(/"/g, '\\"');
+      return `"${escaped}"`;
+    });
+    csvRows.push(headerValues.join(','));
 
     // Add data rows
-    for (const row of data) {
+    for (const row of data.filter(filterData)) {
       const values = headers.map(header => {
-        const escaped = ('' + row[header]).replace(/"/g, '\\"');
+        const escaped = ('' + row[header.key]).trim().replace(/"/g, '\\"');
         return `"${escaped}"`;
       });
       csvRows.push(values.join(','));
@@ -152,7 +163,7 @@ export default function Distractions() {
 
   return (
     <DashboardContainer title="Distractions Table" rightBtn={CSVBtn}>
-      <ReviewsTable data={data} headers={headers} serialize />
+      <ReviewsTable data={data.filter(filterData)} headers={headers} serialize />
     </DashboardContainer>
   );
 }
