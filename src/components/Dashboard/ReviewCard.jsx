@@ -2,9 +2,10 @@ import React, { useState } from "react"
 import Modal from "react-modal"
 import { FaGooglePlay, FaAppStoreIos } from "react-icons/fa6";
 import StarRating from "../StarRating"
+import { MdThumbUp } from "react-icons/md";
 
 
-export default function ReviewCard({ rating, date, text, sentiment, platform }) {
+export default function ReviewCard({ rating, date, text, sentiment, platform, thumbs }) {
   const [showModal, setShowModal] = useState(false)
 
 
@@ -31,6 +32,15 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
     )
   }
 
+  function ThumbsPill({ thumbs }) {
+    return (
+      <div className="flex items-center rounded-full px-4 py-2 text-sm text-white bg-slate-500 space-x-2">
+        <MdThumbUp />
+        <span>{thumbs}</span>
+      </div>
+    )
+  }
+
   function ReviewModal() {
     return (
       <Modal
@@ -48,6 +58,7 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
         </div>
         <p className="text-gray-800 mt-6">{text}</p>
         <div className="flex justify-end items-center space-x-3 mt-8">
+          {thumbs && <ThumbsPill thumbs={thumbs} />}
           <SentimentPill sentiment={sentiment} />
           <PlatformPill platform={platform} />
         </div>
@@ -67,6 +78,7 @@ export default function ReviewCard({ rating, date, text, sentiment, platform }) 
         </div>
         <p className="text-gray-800 mt-6 line-clamp-2">{text}</p>
         <div className="flex justify-end items-center space-x-3 mt-8">
+          {thumbs && <ThumbsPill thumbs={thumbs} />}
           <SentimentPill sentiment={sentiment} />
           <PlatformPill platform={platform} />
         </div>

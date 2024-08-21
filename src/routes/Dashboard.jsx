@@ -23,17 +23,17 @@ export default function Dashboard() {
                 <div className="flex flex-col flex-grow">
                     <TopMenu />
 
-                    <div className="grid p-8 grid-rows-5 grid-cols-6 grid-flow-row gap-8 h-full">
-                        <div className="col-span-2 row-span-3">
+                    <div className="grid p-8 grid-rows-2 grid-cols-6 grid-flow-row gap-8 h-full">
+                        <div className="col-span-2">
                             <EagleEye />
                         </div>
-                        <div className="col-span-4 row-span-3">
+                        <div className="col-span-4">
                             <StarVNumber />
                         </div>
-                        <div className="col-span-3 row-span-2">
+                        <div className="col-span-3">
                             <MostRated /> {/* best and funny review division */}
                         </div>
-                        <div className="col-span-3 row-span-2">
+                        <div className="col-span-3">
                             <FunnyReview />
                         </div>
                     </div>

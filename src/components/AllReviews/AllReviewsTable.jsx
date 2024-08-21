@@ -34,7 +34,7 @@ export default function AllReviewsTable() {
 
   const CSVBtn = (
     <button
-      className="bg-slate-600 text-white hover:bg-slate-700 focus:outline-none rounded-full px-4 py-1 text-sm flex items-center space-x-1"
+      className="bg-slate-700 text-white hover:bg-slate-600 focus:outline-none rounded-full px-4 py-1 text-sm flex items-center space-x-1"
       onClick={downloadCSV}
     >
       <span className="text-xl"><MdOutlineFileDownload /></span>

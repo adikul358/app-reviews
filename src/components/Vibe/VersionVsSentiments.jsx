@@ -1,132 +1,144 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Bar, Pie, Line } from 'react-chartjs-2';
+import React, { useState } from 'react';
+import { Bar, Line } from 'react-chartjs-2';
+import 'daisyui/dist/full.css';
 import { MdOutlineTableChart, MdInsertChartOutlined, MdOutlinePercent, Md123 } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
-import { plugin } from 'mongoose';
-import { Chart } from 'chart.js/auto';
 
 const reviewData = [
   { 
-    month: "Jun 2023",
-    negative: 4200,
-    positive: 3200,
-    neutral: 2600
+    version: "8.1.0",
+    positive: 50,
+    negative: 30,
+    neutral: 20
   },
   { 
-    month: "Jul 2023",
-    negative: 4000,
-    positive: 3500,
-    neutral: 2500
+    version: "8.1.1",
+    positive: 55,
+    negative: 28,
+    neutral: 17
   },
   { 
-    month: "Aug 2023",
-    negative: 4300,
-    positive: 3300,
-    neutral: 2400
+    version: "8.1.2",
+    positive: 52,
+    negative: 35,
+    neutral: 18
   },
   { 
-    month: "Sep 2023",
-    negative: 4500,
-    positive: 3000,
-    neutral: 2500
+    version: "8.2.0",
+    positive: 60,
+    negative: 32,
+    neutral: 20
   },
   { 
-    month: "Oct 2023",
-    negative: 4700,
-    positive: 2500,
-    neutral: 2800
+    version: "8.2.1",
+    positive: 65,
+    negative: 38,
+    neutral: 22
   },
   { 
-    month: "Nov 2023",
-    negative: 4900,
-    positive: 2300,
-    neutral: 2800
+    version: "8.2.2",
+    positive: 70,
+    negative: 40,
+    neutral: 25
   },
   { 
-    month: "Dec 2023",
-    negative: 4800,
-    positive: 2400,
-    neutral: 2800
+    version: "8.3.0",
+    positive: 45,
+    negative: 35,
+    neutral: 15
+  },
+  { 
+    version: "8.4.0",
+    positive: 62,
+    negative: 45,
+    neutral: 15
   },
 ];
 
-export default function ReviewsVSMonth() {
+export default function VersionVsSentiments() {
   const [showGraph, setShowGraph] = useState(true);
   const [showPercent, setShowPercent] = useState(false);
 
   const reviewDataPercentage = reviewData.map(v => {
     var sum = v.positive + v.negative + v.neutral;
     return {
-      month: v.month,
+      version: v.version,
       positive: (v.positive * 100 / sum),
       neutral: (v.neutral * 100 / sum),
       negative: (v.negative * 100 / sum),
     }
   })
 
-  const [selectedMonth, setSelectedMonth] = useState(reviewData[reviewData.length - 1].month)
   const data = {
-    labels: [
-      'Positive',
-      'Neutral',
-      'Negative'
-    ],
+    labels: reviewData.map(item => item.version),
     datasets: [
       {
-        label: reviewData[reviewData.findIndex(({ month }) => (month == selectedMonth))].month,
-        data: [
-          reviewData[reviewData.findIndex(({ month }) => (month == selectedMonth))].positive,
-          reviewData[reviewData.findIndex(({ month }) => (month == selectedMonth))].neutral,
-          reviewData[reviewData.findIndex(({ month }) => (month == selectedMonth))].negative,
-        ],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 99, 132, 0.6)'
-        ]
+        label: 'Positive',
+        data: reviewData.map(item => item.positive),
+        borderColor: 'rgba(75, 192, 192, 0.6)',
+        fill: false,
+        tension: 0.2
+      },
+      {
+        label: 'Neutral',
+        data: reviewData.map(item => item.neutral),
+        borderColor: 'rgba(54, 162, 235, 0.6)',
+        fill: false,
+        tension: 0.2
+      },
+      {
+        label: 'Negative',
+        data: reviewData.map(item => item.negative),
+        borderColor: 'rgba(255, 99, 132, 0.6)',
+        fill: false,
+        tension: 0.2
       },
     ],
   };
 
   const options = {
+    responsive: true, // Make the chart responsive
+    maintainAspectRatio: false,
+    color: "#ffffff",
+    scales: {
+      x: {
+        grid: { color: "rgba(255,255,255,0.1)" },
+        ticks: {
+          color: "rgba(255,255,255,0.5)"
+        }
+      },
+      y: {
+        grid: { color: "rgba(255,255,255,0.1)" },
+        ticks: { color: "rgba(255,255,255,0.5)" },
+        beginAtZero: true,
+      },
+    },
     plugins: {
       legend: {
         display: true,
         position: "right",
         align: "center",
         labels: {
-          borderRadius: 4,
-          useBorderRadius: true,
           usePointStyle: true,
-          pointStyle: "rectRounded"
+          pointStyle: "line",
+          height: 14,
         },
       },
       datalabels: {
-        formatter: (value, ctx) => {
-          let sum = 0;
-          let dataArr = ctx.chart.data.datasets[0].data;
-          dataArr.map(data => {
-            sum += data;
-          });
-          let percentage = (value * 100 / sum).toFixed(1) + "%";
-          return percentage;
-        },
-        color: 'rgba(255,255,255,0.9)',
-        labels: {
-          title: {
-            font: {
-              size: 16,
-              weight: 400,
-            }
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const index = context.dataIndex;
+            const datasetIndex = context.datasetIndex;
+            const type = datasetIndex === 0 ? 'Positive' : datasetIndex === 1 ? 'Neutral' : 'Negative';
+            const value = context.raw;
+            return `${type}: ${value}%`;
           },
-        }
-      }
+        },
+      },
     },
-    responsive: true, // Make the chart responsive
-    maintainAspectRatio: false,
-    color: "#ffffff",
-    borderColor: "#475569",
-    borderWidth: 2
   };
 
   const toggleView = () => {
@@ -137,18 +149,10 @@ export default function ReviewsVSMonth() {
   };
 
   return (
-    <DashboardContainer title="Reviews vs. Month">
+    <DashboardContainer title="Version vs. Sentiments">
       <div className="h-full">
         <div className="z-20 flex flex-row justify-end space-x-3 mb-3 absolute bottom-2 right-4">
-          {showGraph ? (
-            <div className="bg-slate-800 rounded-full pr-2">
-              <select className="flex items-center justify-center w-[120px] h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none px-3 text-sm" defaultValue={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} title={showGraph ? "View Table" : "View Graph"}>
-                {reviewData.map(v => (
-                  <option value={v.month}>{v.month}</option>
-                ))}
-              </select>
-            </div>
-          ) : (
+          {!showGraph && (
             <button className="flex items-center justify-center w-12 h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none text-xl" onClick={togglePercent} title={showPercent ? "View Count" : "View Percent"}>
               {showPercent ? <Md123 size={32} /> : <MdOutlinePercent />}
             </button>
@@ -158,12 +162,12 @@ export default function ReviewsVSMonth() {
           </button>
         </div>
         {showGraph ? (
-          <Pie id={21} data={data} options={options} />
+          <Line id={22} data={data} options={options} />
         ) : (
-          <table className="table pb-20">
+          <table className="table">
             <thead>
               <tr className="text-white/50">
-                <th>Month</th>
+                <th>Version</th>
                 <th className="text-right">Positive <br/> {showPercent ? "(%age)" : "(count)"}</th>
                 <th className="text-right">Neutral <br/> {showPercent ? "(%age)" : "(count)"}</th>
                 <th className="text-right">Negative <br/> {showPercent ? "(%age)" : "(count)"}</th>
@@ -173,7 +177,7 @@ export default function ReviewsVSMonth() {
               {showPercent ?
                 reviewDataPercentage.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.month}</td>
+                    <td>{item.version}</td>
                     <td className="font-light text-right">{item.positive.toFixed(1) + "%"}</td>
                     <td className="font-light text-right">{item.neutral.toFixed(1) + "%"}</td>
                     <td className="font-light text-right">{item.negative.toFixed(1) + "%"}</td>
@@ -182,7 +186,7 @@ export default function ReviewsVSMonth() {
                 :
                 reviewData.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.month}</td>
+                    <td>{item.version}</td>
                     <td className="font-light text-right">{item.positive.toLocaleString()}</td>
                     <td className="font-light text-right">{item.neutral.toLocaleString()}</td>
                     <td className="font-light text-right">{item.negative.toLocaleString()}</td>

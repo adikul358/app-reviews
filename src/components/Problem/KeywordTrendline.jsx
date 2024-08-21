@@ -5,52 +5,53 @@ import { MdOutlineTableChart, MdInsertChartOutlined } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 import { plugin } from 'mongoose';
 
+const reviewData = [
+  {
+    keyword: "Buffering",
+    tally: [
+      { month: "Mar 2024", tally: 8 },
+      { month: "Apr 2024", tally: 10 },
+      { month: "May 2024", tally: 12 },
+      { month: "Jun 2024", tally: 15 },
+      { month: "Jul 2024", tally: 18 },
+      { month: "Aug 2024", tally: 22 },
+    ]
+  },
+  {
+    keyword: "Download",
+    tally: [
+      { month: "Mar 2024", tally: 5 },
+      { month: "Apr 2024", tally: 7 },
+      { month: "May 2024", tally: 8 },
+      { month: "Jun 2024", tally: 1 },
+      { month: "Jul 2024", tally: 1 },
+      { month: "Aug 2024", tally: 1 },
+    ]
+  },
+  {
+    keyword: "Price",
+    tally: [
+      { month: "Mar 2024", tally: 4 },
+      { month: "Apr 2024", tally: 6 },
+      { month: "May 2024", tally: 7 },
+      { month: "Jun 2024", tally: 8 },
+      { month: "Jul 2024", tally: 10 },
+      { month: "Aug 2024", tally: 12 },
+    ]
+  },
+]
+
 export default function KeywordTrendline() {
-  const reviewData = [
-    {
-      keyword: 'Keyword 1', tally: {
-        "Jul 2024": 23,
-        "Jun 2024": 12,
-        "May 2024": 6,
-        "Apr 2024": 25,
-        "Mar 2024": 76,
-        "Feb 2024": 3,
-        "Jan 2024": 2,
-      },
-    },
-    {
-      keyword: 'Keywordkeywordkeywordkeywordkeywordkeyword 2', tally: {
-        "Jul 2024": 12,
-        "Jun 2024": 8,
-        "May 2024": 6,
-        "Apr 2024": 2,
-        "Mar 2024": 7,
-        "Feb 2024": 3,
-        "Jan 2024": 2,
-      },
-    },
-    {
-      keyword: 'Keyword 3', tally: {
-        "Jul 2024": 23,
-        "Jun 2024": 48,
-        "May 2024": 63,
-        "Apr 2024": 25,
-        "Mar 2024": 76,
-        "Feb 2024": 52,
-        "Jan 2024": 21,
-      },
-    },
-  ];
 
   const [selectedKeyword, setSelectedKeyword] = useState(reviewData[0].keyword)
   const selectedKeywordIndex = reviewData.findIndex(({ keyword }) => (keyword == selectedKeyword))
 
   const data = {
-    labels: Object.keys(reviewData[selectedKeywordIndex].tally),
+    labels: reviewData[selectedKeywordIndex].tally.map(v => v.month),
     datasets: [
       {
         label: selectedKeyword,
-        data: Object.values(reviewData[selectedKeywordIndex].tally),
+        data: reviewData[selectedKeywordIndex].tally.map(v => v.tally),
         borderColor: 'rgba(75, 192, 192, 0.6)',
         fill: false,
         tension: 0.2

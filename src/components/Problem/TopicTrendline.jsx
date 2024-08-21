@@ -5,52 +5,54 @@ import { MdOutlineTableChart, MdInsertChartOutlined } from "react-icons/md";
 import DashboardContainer from '../DashboardContainer';
 import { plugin } from 'mongoose';
 
+const reviewData = [
+  {
+    topic: "Content Library and Variety",
+    tally: [
+      { month: "Mar 2024", tally: 15, },
+      { month: "Apr 2024", tally: 18, },
+      { month: "May 2024", tally: 20, },
+      { month: "Jun 2024", tally: 22, },
+      { month: "Jul 2024", tally: 25, },
+      { month: "Aug 2024", tally: 28, },
+    ]
+  },
+  {
+    topic: "Streaming Quality",
+    tally: [
+      { month: "Mar 2024", tally: 12, },
+      { month: "Apr 2024", tally: 14, },
+      { month: "May 2024", tally: 16, },
+      { month: "Jun 2024", tally: 18, },
+      { month: "Jul 2024", tally: 19, },
+      { month: "Aug 2024", tally: 22, },
+    ]
+  },
+  {
+    topic: "Pricing and Subscription Plans",
+    tally: [
+      { month: "Mar 2024", tally: 10 },
+      { month: "Apr 2024", tally: 12 },
+      { month: "May 2024", tally: 15 },
+      { month: "Jun 2024", tally: 18 },
+      { month: "Jul 2024", tally: 20 },
+      { month: "Aug 2024", tally: 25 },
+    ]
+  },
+]
+
+
 export default function TopicTrendline() {
-  const reviewData = [
-    {
-      topic: 'Topic 1', tally: {
-        "Jul 2024": 23,
-        "Jun 2024": 12,
-        "May 2024": 6,
-        "Apr 2024": 25,
-        "Mar 2024": 76,
-        "Feb 2024": 3,
-        "Jan 2024": 2,
-      },
-    },
-    {
-      topic: 'Topictopictopictopictopictopic 2', tally: {
-        "Jul 2024": 12,
-        "Jun 2024": 8,
-        "May 2024": 6,
-        "Apr 2024": 2,
-        "Mar 2024": 7,
-        "Feb 2024": 3,
-        "Jan 2024": 2,
-      },
-    },
-    {
-      topic: 'Topic 3', tally: {
-        "Jul 2024": 23,
-        "Jun 2024": 48,
-        "May 2024": 63,
-        "Apr 2024": 25,
-        "Mar 2024": 76,
-        "Feb 2024": 52,
-        "Jan 2024": 21,
-      },
-    },
-  ];
 
   const [selectedTopic, setSelectedTopic] = useState(reviewData[0].topic)
   const selectedTopicIndex = reviewData.findIndex(({ topic }) => (topic == selectedTopic))
 
   const data = {
-    labels: Object.keys(reviewData[selectedTopicIndex].tally),
+    labels: reviewData[selectedTopicIndex].tally.map(v => v.month),
     datasets: [
       {
         label: selectedTopic,
-        data: Object.values(reviewData[selectedTopicIndex].tally),
+        data: reviewData[selectedTopicIndex].tally.map(v => v.tally),
         borderColor: 'rgba(75, 192, 192, 0.6)',
         fill: false,
         tension: 0.2

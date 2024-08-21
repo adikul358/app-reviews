@@ -9,6 +9,8 @@ import TopMenu from '../components/TopMenu';
 import DashboardContainer from '../components/DashboardContainer';
 import TopicTrendline from '../components/Problem/TopicTrendline';
 import KeywordTrendline from '../components/Problem/KeywordTrendline';
+import TopicTable from '../components/Problem/TopicTable';
+import KeywordTable from '../components/Problem/KeywordTable';
 
 export default function Problem() {
 
@@ -24,58 +26,26 @@ export default function Problem() {
 			<div className="flex flex-col flex-grow">
 				{/* <TopMenu /> */}
 
-				<div className="grid p-8 grid-rows-3 grid-cols-2 grid-flow-row gap-8 h-[1360px]">
-
-
+				<div className="grid p-8 grid-rows-2 grid-cols-2 grid-flow-row gap-8 h-full">
 					<div>
-						<DashboardContainer title="Topic Tally">
-							<table className="table pb-20">
-								<thead>
-									<tr className="text-white/50">
-										<th>Topic</th>
-										<th>Tally</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Topic1</td>
-										<td>23</td>
-									</tr>
-								</tbody>
-							</table>
-						</DashboardContainer>
+						<TopicTable />
 					</div>
 					<div>
 						<TopicTrendline />
 					</div>
 					<div>
-						<DashboardContainer title="Keyword Tally">
-							<table className="table pb-20">
-								<thead>
-									<tr className="text-white/50">
-										<th>Keyword</th>
-										<th>Tally</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Keyword1</td>
-										<td>23</td>
-									</tr>
-								</tbody>
-							</table>
-						</DashboardContainer>
+						<KeywordTable />
 					</div>
 					<div>
 						<KeywordTrendline />
 					</div>
-					<div>
+					{/* <div>
 						<DashboardContainer title="Insert Title">under construction</DashboardContainer>
 					</div>
 					<div>
 						<DashboardContainer title="Insert Graph Title">under construction</DashboardContainer>
-						{/* <KeywordTrendline /> */}
-					</div>
+						<KeywordTrendline />
+					</div> */}
 
 					{/* <div className="row-span-6 col-span-2">
 						<TvsSGraph />
