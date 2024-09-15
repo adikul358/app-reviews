@@ -97,7 +97,7 @@ export default function KeywordTrendline() {
   return (
     <DashboardContainer title="Keyword Tally Trendline" rightBtn={KeywordSelectBtn}>
       <div className="h-full">
-        <Line id={22} data={data} options={options} className="" />
+        <Line data={data} options={options} className="" />
       </div>
     </DashboardContainer>
   );

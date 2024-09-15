@@ -33,11 +33,11 @@ const NAVIGATION_ITEMS = [
         link: "/problem",
         icon: <MdHelpOutline />
     },
-    // {
-    //     label: "All Reviews",
-    //     link: "/reviews",
-    //     icon: <MdFolder />
-    // },
+    {
+        label: "All Reviews",
+        link: "/reviews",
+        icon: <MdFolder />
+    },
     {
         label: "Profile",
         icon: <MdAccountCircle />

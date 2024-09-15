@@ -41,11 +41,26 @@ const reviewData = [
   },
 ]
 
+// const getMaxMin = (data) => {
+//   let max = data[0].tally[0].tally
+//   let min = data[0].tally[0].tally
+
+//   for (const t of data) {
+//     for (const u of t.tally) {
+//       if (u.tally > max) {max = u.tally}
+//       if (u.tally < min) {min = u.tally}
+//     }
+//   }
+
+//   return { max, min }
+// }
+
 
 export default function TopicTrendline() {
 
   const [selectedTopic, setSelectedTopic] = useState(reviewData[0].topic)
   const selectedTopicIndex = reviewData.findIndex(({ topic }) => (topic == selectedTopic))
+  // const { max, min } = getMaxMin(reviewData)
 
   const data = {
     labels: reviewData[selectedTopicIndex].tally.map(v => v.month),
@@ -77,6 +92,8 @@ export default function TopicTrendline() {
         grid: { color: "rgba(255,255,255,0.1)" },
         ticks: { color: "rgba(255,255,255,0.5)" },
         beginAtZero: true,
+        // max: max,
+        // min: min
       },
     },
     plugins: {

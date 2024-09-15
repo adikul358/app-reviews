@@ -11,6 +11,8 @@ import TopicTrendline from '../components/Problem/TopicTrendline';
 import KeywordTrendline from '../components/Problem/KeywordTrendline';
 import TopicTable from '../components/Problem/TopicTable';
 import KeywordTable from '../components/Problem/KeywordTable';
+import UniqueProblemsTable from '../components/Problem/UniqueProblemsTable';
+import TopicVsSentiment from '../components/Vibe/TopicVsSentiment';
 
 export default function Problem() {
 
@@ -26,7 +28,7 @@ export default function Problem() {
 			<div className="flex flex-col flex-grow">
 				{/* <TopMenu /> */}
 
-				<div className="grid p-8 grid-rows-2 grid-cols-2 grid-flow-row gap-8 h-full">
+				<div className="grid p-8 grid-rows-3 grid-cols-2 grid-flow-row gap-8 h-[1280px]">
 					<div>
 						<TopicTable />
 					</div>
@@ -39,13 +41,12 @@ export default function Problem() {
 					<div>
 						<KeywordTrendline />
 					</div>
-					{/* <div>
-						<DashboardContainer title="Insert Title">under construction</DashboardContainer>
+					<div>
+						<TopicVsSentiment />
 					</div>
 					<div>
-						<DashboardContainer title="Insert Graph Title">under construction</DashboardContainer>
-						<KeywordTrendline />
-					</div> */}
+						<UniqueProblemsTable />
+					</div>
 
 					{/* <div className="row-span-6 col-span-2">
 						<TvsSGraph />
