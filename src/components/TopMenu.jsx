@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelection } from '../redux/dropdownSlice';
-import { MdRefresh } from "react-icons/md";
+import RefreshButton from './RefreshButton';
 
 export default function TopMenu() {
   const dispatch = useDispatch();
@@ -24,10 +24,7 @@ export default function TopMenu() {
           <option value="Combined">Combined</option>
         </select>
       </div>
-      {/* <button className="flex flex-row items-center justify-center h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none text-sm space-x-1 px-5">
-        <MdRefresh size={24}/>
-        <span>Refresh</span>
-      </button> */}
+      <RefreshButton />
 
     </div>
   );
