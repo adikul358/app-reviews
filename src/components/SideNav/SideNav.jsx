@@ -40,6 +40,7 @@ const NAVIGATION_ITEMS = [
     },
     {
         label: "Profile",
+        link: "/profile",
         icon: <MdAccountCircle />
     },
 ]
