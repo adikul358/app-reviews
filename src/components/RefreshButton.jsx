@@ -12,7 +12,7 @@ const emails = [
 ]
 
 export default function RefreshButton() {
-    const [modalOpen, setModalOpen] = useState(true)
+    const [modalOpen, setModalOpen] = useState(false)
     const [jobState, setJobState] = useState(null)
     
     const [isConnected, setIsConnected] = useState(socket.connected);
