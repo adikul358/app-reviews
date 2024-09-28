@@ -106,6 +106,7 @@ export default function MostRated() {
             sentiment={v.sentiment}
             thumbs={v.thumbs}
             text={v.content}
+            key={i}
           />
         ))}
       </div>

@@ -118,8 +118,8 @@ export default function ReviewsVSMonth() {
           {showGraph ? (
             <div className="bg-slate-800 rounded-full pr-2">
               <select className="flex items-center justify-center w-[120px] h-12 bg-slate-800 rounded-full shadow-md text-white focus:outline-none px-3 text-sm" defaultValue={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)} title={showGraph ? "View Table" : "View Graph"}>
-                {reviewData.map(v => (
-                  <option value={v.month}>{v.month}</option>
+                {reviewData.map((v,i) => (
+                  <option value={v.month} key={i}>{v.month}</option>
                 ))}
               </select>
             </div>
@@ -148,8 +148,8 @@ export default function ReviewsVSMonth() {
             </thead>
             <tbody>
               {showPercent ?
-                reviewDataPercentage.map((item, index) => (
-                  <tr key={index}>
+                reviewDataPercentage.map((item, i) => (
+                  <tr key={i}>
                     <td>{item.month}</td>
                     <td className="font-light text-right">{item.star5.toFixed(1) + "%"}</td>
                     <td className="font-light text-right">{item.star4.toFixed(1) + "%"}</td>
@@ -159,8 +159,8 @@ export default function ReviewsVSMonth() {
                   </tr>
                 ))
                 :
-                reviewData.map((item, index) => (
-                  <tr key={index}>
+                reviewData.map((item, i) => (
+                  <tr key={i}>
                     <td>{item.month}</td>
                     <td className="font-light text-right">{item.star5}</td>
                     <td className="font-light text-right">{item.star4}</td>

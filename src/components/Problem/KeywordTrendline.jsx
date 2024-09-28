@@ -87,8 +87,8 @@ export default function KeywordTrendline() {
   const KeywordSelectBtn = (
     <div className="bg-slate-700 rounded-full pr-2">
       <select className="flex items-center justify-center w-[200px] bg-slate-700 rounded-full shadow-md text-white focus:outline-none px-3 py-1 text-sm text-ellipsis" defaultValue={selectedKeyword} onChange={(e) => setSelectedKeyword(e.target.value)}>
-        {reviewData.map(v => (
-          <option value={v.keyword}>{v.keyword}</option>
+        {reviewData.map((v,i) => (
+          <option value={v.keyword} key={i}>{v.keyword}</option>
         ))}
       </select>
     </div>

@@ -39,7 +39,7 @@ export default function VersionWise() {
 
     return (
       <div className="space-y-3 leading-6 opacity-90">
-        {raw_text.split("\n").map(v => <p>{v}</p>)}
+        {raw_text.split("\n").map((v,i) => <p key={i}>{v}</p>)}
       </div>
     )
   }

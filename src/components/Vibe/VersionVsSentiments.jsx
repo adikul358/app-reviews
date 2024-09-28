@@ -175,8 +175,8 @@ export default function VersionVsSentiments() {
             </thead>
             <tbody>
               {showPercent ?
-                reviewDataPercentage.map((item, index) => (
-                  <tr key={index}>
+                reviewDataPercentage.map((item, i) => (
+                  <tr key={i}>
                     <td>{item.version}</td>
                     <td className="font-light text-right">{item.positive.toFixed(1) + "%"}</td>
                     <td className="font-light text-right">{item.neutral.toFixed(1) + "%"}</td>
@@ -184,8 +184,8 @@ export default function VersionVsSentiments() {
                   </tr>
                 ))
                 :
-                reviewData.map((item, index) => (
-                  <tr key={index}>
+                reviewData.map((item, i) => (
+                  <tr key={i}>
                     <td>{item.version}</td>
                     <td className="font-light text-right">{item.positive.toLocaleString()}</td>
                     <td className="font-light text-right">{item.neutral.toLocaleString()}</td>

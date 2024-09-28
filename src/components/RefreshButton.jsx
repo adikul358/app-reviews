@@ -36,7 +36,6 @@ export default function RefreshButton() {
         }
         
         function onStatus(value) {
-            console.log(value)
             if (value.length > 0) {
                 setJobState("started")
                 setMessages([...value]);

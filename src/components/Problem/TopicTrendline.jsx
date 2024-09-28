@@ -105,8 +105,8 @@ export default function TopicTrendline() {
   const TopicSelectBtn = (
     <div className="bg-slate-700 rounded-full pr-2">
       <select className="flex items-center justify-center w-[200px] bg-slate-700 rounded-full shadow-md text-white focus:outline-none px-3 py-1 text-sm text-ellipsis" defaultValue={selectedTopic} onChange={(e) => setSelectedTopic(e.target.value)}>
-        {reviewData.map(v => (
-          <option value={v.topic}>{v.topic}</option>
+        {reviewData.map((v,i) => (
+          <option value={v.topic} key={i}>{v.topic}</option>
         ))}
       </select>
     </div>

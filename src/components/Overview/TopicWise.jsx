@@ -34,8 +34,8 @@ export default function TopicWise() {
         onChange={(e) => setSelectedOption(e.target.value)}
       >
         <option value="" disabled selected>Select Topic</option>
-        {data.map(v => (
-          <option value={v.topic}>{v.topic}</option>
+        {data.map((v,i) => (
+          <option value={v.topic} key={i}>{v.topic}</option>
         ))}
       </select>
     </div>
@@ -46,7 +46,7 @@ export default function TopicWise() {
 
     return (
       <div className="space-y-3 leading-6 opacity-90">
-        {raw_text.split("\n").map(v => <p>{v}</p>)}
+        {raw_text.split("\n").map((v,i) => <p key={i}>{v}</p>)}
       </div>
     )
   }

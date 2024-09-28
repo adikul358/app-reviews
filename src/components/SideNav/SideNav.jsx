@@ -91,8 +91,8 @@ export default function SideNav({ active }) {
                     )} */}
 
                 <div className="flex flex-col space-y-1 pt-6">
-                    {NAVIGATION_ITEMS.map(({ label, link, icon }) => (
-                        <MenuItem label={label} link={link} icon={icon} active={label == active} />
+                    {NAVIGATION_ITEMS.map(({ label, link, icon }, i) => (
+                        <MenuItem key={i} label={label} link={link} icon={icon} active={label == active} />
                     ))}
                 </div>
 
